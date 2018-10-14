@@ -6,7 +6,7 @@ const path = require('path');
 const app = express();
 
 //Set static path
-app.use(express.static(path.join(__dirname, "client")));
+app.use(express.static(path.join(__dirname, 'client')));
 
 app.use(bodyParser.json());
 
@@ -26,10 +26,10 @@ app.post('/subscribe', (req, res) => {
     res.status(201).json({});
 
     //Create payload
-    const payLoad = JSON.stringify({title: 'Push Test'});
+    const payload = JSON.stringify({title: 'Push Test'});
 
     //Pass object into sendNotification
-    webPush.sendNotification(subscription, payLoad).catch(err => console.error(err));
+    webPush.sendNotification(subscription, payload).catch(err => console.error(err));
 });
 
 const port = 5000;
